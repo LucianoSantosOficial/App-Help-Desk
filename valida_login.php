@@ -1,26 +1,38 @@
 <?php
 
+
+	session_start();
+
+
+	$ususario_autenticado = false;
 	$usuarios_app = array(
 		array('email' => 'adm@teste.com.br', 'senha' => '123456'),
 		array('email' => 'user@teste.com.br', 'senha' => '124578'),
 		array('email' => 'teste@teste.com.br', 'senha' => '1234')
 	);
 
+	/*
 	echo '<pre>';
 	print_r($usuarios_app);
 	echo '</pre>';
+	*/
 
-	print_r($_POST);
+	foreach ($usuarios_app as $user) {
 
-	echo '</br>';
+	
+		if ($user['email'] == $_POST['email'] && $user['senha'] == $_POST['senha']) {
+			$ususario_autenticado = true;
+		}
 
-	echo $_POST['email'];
-	echo '</br>';
-	echo $_POST['senha'];
-	echo '</br>';
+			
+	}
 
-	if ($_POST['senha'] == '123456') {
-		echo 'Bem vindo ADM!';
+	if ($ususario_autenticado) {
+		echo 'Usuário autenticado';
+		$_SESSION['autenticado'] = 'SIM';
+	} else {
+		$_SESSION['autenticado'] = 'NÃO';
+		header('Location:index.php?login=erro');
 	}
 
 ?>
