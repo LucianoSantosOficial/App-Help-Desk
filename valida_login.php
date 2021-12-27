@@ -11,11 +11,6 @@
 		array('email' => 'teste@teste.com.br', 'senha' => '1234')
 	);
 
-	/*
-	echo '<pre>';
-	print_r($usuarios_app);
-	echo '</pre>';
-	*/
 
 	foreach ($usuarios_app as $user) {
 
@@ -30,6 +25,7 @@
 	if ($ususario_autenticado) {
 		echo 'Usuário autenticado';
 		$_SESSION['autenticado'] = 'SIM';
+		header('Location:home.php');
 	} else {
 		$_SESSION['autenticado'] = 'NÃO';
 		header('Location:index.php?login=erro');
