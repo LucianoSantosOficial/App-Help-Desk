@@ -5,10 +5,17 @@
 
 
 	$ususario_autenticado = false;
+	$usuario_id = null;
+	$ususario_perfil_id = null;
+
+	$perfis = array(1 => 'Administrativo', 2 => 'Usuário');
+
 	$usuarios_app = array(
-		array('email' => 'adm@teste.com.br', 'senha' => '123456'),
-		array('email' => 'user@teste.com.br', 'senha' => '124578'),
-		array('email' => 'teste@teste.com.br', 'senha' => '1234')
+		array('id' => 1, 'email' => 'adm@teste.com.br', 'senha' => '124578', 'perfil_id' => 1),
+		array('id' => 2, 'email' => 'user@teste.com.br', 'senha' => '124578', 'perfil_id' => 1),
+		array('id' => 3, 'email' => 'jose@teste.com.br', 'senha' => '124578', 'perfil_id' => 2),
+		array('id' => 4, 'email' => 'maria@teste.com.br', 'senha' => '124578', 'perfil_id' => 2)
+
 	);
 
 
@@ -17,6 +24,8 @@
 	
 		if ($user['email'] == $_POST['email'] && $user['senha'] == $_POST['senha']) {
 			$ususario_autenticado = true;
+			$usuario_id = $user['id'];
+			$ususario_perfil_id = $user['perfil_id'];
 		}
 
 			
@@ -25,6 +34,8 @@
 	if ($ususario_autenticado) {
 		echo 'Usuário autenticado';
 		$_SESSION['autenticado'] = 'SIM';
+		$_SESSION['id'] = $usuario_id;
+		$_SESSION['perfil_id'] = $ususario_perfil_id;
 		header('Location:home.php');
 	} else {
 		$_SESSION['autenticado'] = 'NÃO';
