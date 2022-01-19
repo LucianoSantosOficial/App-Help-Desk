@@ -6,14 +6,14 @@
   $chamados = array();
 
   //abrir o arquivo.hd
-  $arquivo = fopen('arquivo.hd', 'r');
+  $arquivo = fopen('../../app_help_desk/arquivo.hd', 'r');
 
   //percorrer o arquivo enquanto ouver linhas
   while (!feof($arquivo)) {
     $registro = fgets($arquivo);
     $chamados[] = $registro;
   }
-
+  //fecha o arquivo aberto
   fclose($arquivo);
 
 ?>
