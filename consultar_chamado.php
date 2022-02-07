@@ -6,7 +6,7 @@
   $chamados = array();
 
   //abrir o arquivo.hd
-  $arquivo = fopen('../../app_help_desk/arquivo.hd', 'r');
+  $arquivo = fopen('arquivo.hd', 'r');
 
   //percorrer o arquivo enquanto ouver linhas
   while (!feof($arquivo)) {

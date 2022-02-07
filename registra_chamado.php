@@ -9,7 +9,7 @@
 	$descricao = str_replace('/', '-', $_POST['descricao']);
 
 	//Abrindo o arquivo.
-	$arquivo = fopen('../../app_help_desk/arquivo.hd', 'a');
+	$arquivo = fopen('arquivo.hd', 'a');
 
 	$texto = $_SESSION['id'] . '/' .  $titulo . '/' .  $categoria . '/' . $descricao . PHP_EOL;
 
